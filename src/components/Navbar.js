@@ -29,9 +29,9 @@ export function MyMenu() {
                 <Nav className="justify-content-end flex-grow-1 pe-3" className="lateral">
                   <Nav.Link href="/">Home</Nav.Link>
                   <Nav.Link href="/manager">Manager</Nav.Link>
-				  <Nav.Link href="/test">Test</Nav.Link>
-				  <Nav.Link href="/tester">Tester</Nav.Link>
-				  <Nav.Link href="/uploader">Uploader</Nav.Link>
+				  
+				  <Nav.Link href="/tester">Uploader</Nav.Link>
+				  >
                   <NavDropdown
                     title="Dropdown"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
