@@ -1,0 +1,36 @@
+
+
+
+.menu{
+	
+	text-align: center;
+	
+	
+}
+
+.myfile{
+	
+	
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+	background: gray;
+	
+}
+.img{
+	width: 100px;
+}
+.tester{
+	text-align: center;
+	
+}
+body{
+	
+	background-color: #12093A;
+	color: white;
+}
+	 
+	 
+.lateral{
+	color:black;
+}
