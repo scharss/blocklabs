@@ -61,7 +61,7 @@ export function GuardarArchivoIpfs(){
 		<Button variant="primary"
 		onClick={async ()=>{
 			
-			const client = new NFTStorage({ token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDQ5QkVBYjEyMjlGOGJFNzIyNkIxOGVDMDhBRDEwMWNjZjdlMDFkRTgiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY2MDAxNTQxMzA5NywibmFtZSI6Ik5mdFVwbG9hZGVyIn0.r4W2JWToqtiT3pihz0i7QuO0TqoSZqmPgw_i43sb7hE" })
+			const client = new NFTStorage({ token: "API_KEY" })
 					
 			const cid = await client.storeDirectory([
 			new File(["Hello word"], archivo),
