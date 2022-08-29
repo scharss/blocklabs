@@ -181,23 +181,13 @@ export function TesterComponent(){
 	
 	return(<>
 	
-			<h1>NFT Storage</h1>
-			<input id="fileItem" type="file" className="MyInputFile" name="My File"/>
-			<h4>Elegir Archivo</h4>
+			<h2>Upload file to IPFS</h2>
+			{/*<input id="fileItem" type="file" className="MyInputFile" name="My File"/>*/}
+			<p><input id="fileItem" type="file" className="MyInputFile" name="My File" onChange={function(){
+		const file = document.getElementById('fileItem').files[0];
+		myFile.push(file);}}/></p>
+			
 						
-			<p><Button variant='primary'
-			onClick={()=>{
-				const file = document.getElementById('fileItem').files[0];
-				myFile.push(file);
-				console.log(myFile[0])
-				console.log(myFile[0].name)
-				console.log(myFile[0].type)
-			}}
-			>Upload</Button></p>
-			
-			
-			
-			
 	
 	</>)
 }
@@ -241,7 +231,7 @@ console.log('metadata.json with IPFS gateway URLs:\n', metadata.embed())
 
 export function StoreFile(){
 	return(<>
-	<h1>StoreFile</h1>
+	
 	<Button variant='primary'
 	onClick={async ()=>{
 		
@@ -252,7 +242,7 @@ export function StoreFile(){
 	
 	console.log(cid)
 	}}
-	>Store file</Button>
+	>Store file in IPFS</Button>
 	</>)
 }
 
