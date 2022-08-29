@@ -147,8 +147,8 @@ export function WriteContract()
 onClick={async ()=>{
 	
 	const storingx = new ethers.Contract(address, abi, signer);
-	var x = cid
-{/*	var x = document.getElementById('furl').value;   */}
+	{/*var x = cid*/}
+	var x = document.getElementById('furl').value;   
 	
 	
 	await storingx.storex(x);
