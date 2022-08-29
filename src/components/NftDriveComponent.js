@@ -21,13 +21,15 @@ import '../styles.css'
 //bootstrap
 
 //**********************************CONTRACT CONNECT***********************************
+const NFT_STORAGE_TOKEN = process.env.REACT_APP_STORAGE
+const client = new NFTStorage({ token: NFT_STORAGE_TOKEN })
 
 let provider = new ethers.providers.Web3Provider(window.ethereum)
 let signer
 
 var cid = 0 // storage
 
-export function ContractManager() {
+export function Connectmetamask() {
 	
 	
 	return (<div>
@@ -60,7 +62,7 @@ export function ContractManager() {
 		 
 		 var address =0
 
-export function ConnectMetamask(){
+export function ContractInput(){
 	return (<div>
 	<p>Contract: <input id="add2" onChange={function(e){
 		 address = e.target.value
@@ -99,6 +101,90 @@ const abi = [
 	}
 ];
 
+
+
+var textNameDescription = " ";
+export function InputNameDescrip(){
+	return(<>
+	
+	<p>Name/Description:</p>
+	<p> <input id="furl" className="inputScript" onChange={function(e){
+		textNameDescription = e.target.value
+		
+		console.log(textNameDescription)}}/></p>
+		
+	</>)
+}
+
+var myFile= [];
+export function ChooseFile(){
+	
+	
+	
+	return(<>
+	
+			<h4>Upload file to IPFS</h4>
+			{/*<input id="fileItem" type="file" className="MyInputFile" name="My File"/>*/}
+			<p><input id="fileItem" type="file" className="MyInputFile" name="My File" onChange={function(){
+		const file = document.getElementById('fileItem').files[0];
+		myFile.push(file);}}/></p>
+			
+						
+	
+	</>)
+}
+
+
+export function WriteContract()
+
+{return(<div>
+
+	{/*Formulario y botón
+	<p>Name/Description:</p>
+	<p> <input id="furl" className="inputScript" onChange={function(e){
+		textNameDescription = e.target.value
+		
+		console.log(textNameDescription)}}/></p>
+*/}
+
+
+<Button variant="primary"
+onClick={async ()=>{
+	
+	const storingx = new ethers.Contract(address, abi, signer);
+	{/*var x = cid
+	var x = document.getElementById('furl').value;*/} 
+
+cid = await client.storeDirectory([
+	new File([myFile[0]], myFile[0].name),
+	new File([JSON.stringify({'from': 'incognito'}, null, 2)], 'metadata.json')
+])
+	
+	console.log(cid)
+
+
+	
+	
+	var z = textNameDescription + " " + cid;
+	console.log(z)
+	
+	await storingx.storex(z);
+    
+    document.getElementById('furl').value = " ";
+	myFile.shift();
+}}
+
+
+
+
+>Escribir Contracto</Button>{' '}
+
+
+
+</div>)}
+
+
+
 export function ReadContract(){
 	 
 	
@@ -126,84 +212,14 @@ export function ReadContract(){
 }
 
 
-var textNameDescription = " ";
-export function InputNameDescrip(){
-	return(<>
-	
-	<p>Name/Description:</p>
-	<p> <input id="furl" className="inputScript" onChange={function(e){
-		textNameDescription = e.target.value
-		
-		console.log(textNameDescription)}}/></p>
-		
-	</>)
-}
-
-
-
-export function WriteContract()
-
-{return(<div>
-
-	{/*Formulario y botón
-	<p>Name/Description:</p>
-	<p> <input id="furl" className="inputScript" onChange={function(e){
-		textNameDescription = e.target.value
-		
-		console.log(textNameDescription)}}/></p>
-*/}
-
-
-<Button variant="primary"
-onClick={async ()=>{
-	
-	const storingx = new ethers.Contract(address, abi, signer);
-	{/*var x = cid
-	var x = document.getElementById('furl').value;*/}   
-	var y = cid;
-	var z = textNameDescription + " " + y;
-	console.log(z)
-	
-	await storingx.storex(z);
-    
-    document.getElementById('furl').value = " ";
-}}
-
-
-
-
->Escribir Contracto</Button>{' '}
-
-
-
-</div>)}
-
 //**********************************CONTRACT CONNECT***********************************
 
 //**********************************STORAGE***********************************
 
-const NFT_STORAGE_TOKEN = process.env.REACT_APP_STORAGE
-const client = new NFTStorage({ token: NFT_STORAGE_TOKEN })
 
 
 
-var myFile= [];
-export function ChooseFile(){
-	
-	
-	
-	return(<>
-	
-			<h4>Upload file to IPFS</h4>
-			{/*<input id="fileItem" type="file" className="MyInputFile" name="My File"/>*/}
-			<p><input id="fileItem" type="file" className="MyInputFile" name="My File" onChange={function(){
-		const file = document.getElementById('fileItem').files[0];
-		myFile.push(file);}}/></p>
-			
-						
-	
-	</>)
-}
+
 
 export function TesterFactor(){
 	return(<>
@@ -241,7 +257,7 @@ console.log('metadata.json with IPFS gateway URLs:\n', metadata.embed())
 	</>)
 }
 
-
+{/*
 export function StoreFile(){
 	return(<>
 	
@@ -258,7 +274,7 @@ export function StoreFile(){
 	>Store file in IPFS</Button>
 	</>)
 }
-
+*/}
 
 
 
