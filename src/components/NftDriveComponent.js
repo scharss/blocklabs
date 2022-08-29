@@ -188,13 +188,13 @@ const client = new NFTStorage({ token: NFT_STORAGE_TOKEN })
 
 
 var myFile= [];
-export function TesterComponent(){
+export function ChooseFile(){
 	
 	
 	
 	return(<>
 	
-			<h2>Upload file to IPFS</h2>
+			<h4>Upload file to IPFS</h4>
 			{/*<input id="fileItem" type="file" className="MyInputFile" name="My File"/>*/}
 			<p><input id="fileItem" type="file" className="MyInputFile" name="My File" onChange={function(){
 		const file = document.getElementById('fileItem').files[0];
