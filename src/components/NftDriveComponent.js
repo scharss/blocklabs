@@ -38,15 +38,15 @@ export function ContractManager() {
 
     signer = await provider.getSigner();
 	var cuenta = await signer.getAddress();
-	document.getElementById("demo").innerHTML= "Cuenta: " + cuenta;
-    console.log("Account address s:", await signer.getAddress());}}
+	document.getElementById("demo").innerHTML= "User: " + cuenta;
+    console.log("Account address:", await signer.getAddress());}}
 	
 	
-	>Conectar</Button>{' '}
+	>Connect Metamask</Button>{' '}
 	<br />
 	
 	
-	<p id="demo">Cuenta:</p>
+	<p id="demo">User:</p>
 	
 	
 	
@@ -60,9 +60,9 @@ export function ContractManager() {
 		 
 		 var address =0
 
-export function Direccion(){
+export function ConnectMetamask(){
 	return (<div>
-	<p>Contracto No: <input id="add2" onChange={function(e){
+	<p>Contract: <input id="add2" onChange={function(e){
 		 address = e.target.value
 		console.log(address)}}/></p>
 	</div>)
@@ -104,30 +104,40 @@ export function ReadContract(){
 	
 	 
 	return (<div>
-	
+	<h5>Read Contract</h5>
 	<Button variant="primary"
 	onClick={async ()=>{
 		const contracto = new ethers.Contract(address, abi, provider);
 	
 	const asunto = await contracto.urlNFT();
-	document.getElementById("demo2").innerHTML= "Mensaje: " + asunto;
+	document.getElementById("demo2").innerHTML= "Message: " + asunto;
 	
 	}}
 	
 	
 	
 	
-	>Leer Contracto</Button>{' '}
+	>Read Contract</Button>{' '}
 	
-	 <p id="demo2">Mensaje:</p>
+	 <p id="demo2">Message:</p>
 		    </div>)
 	
 	
 }
 
 
-
-
+var textNameDescription = " ";
+export function InputNameDescrip(){
+	return(<>
+	
+	<p>Name/Description:</p>
+	<p> <input id="furl" className="inputScript" onChange={function(e){
+		textNameDescription = e.target.value
+		
+		console.log(textNameDescription)}}/></p>
+		
+	</>)
+}
 
 
 
@@ -135,23 +145,26 @@ export function WriteContract()
 
 {return(<div>
 
-	{/*Formulario y botón*/}
-
-	<p>Escribir: <input id="furl" onChange={function(e){
-		var caja = e.target.value
-		console.log(caja)}}/></p>
-
+	{/*Formulario y botón
+	<p>Name/Description:</p>
+	<p> <input id="furl" className="inputScript" onChange={function(e){
+		textNameDescription = e.target.value
+		
+		console.log(textNameDescription)}}/></p>
+*/}
 
 
 <Button variant="primary"
 onClick={async ()=>{
 	
 	const storingx = new ethers.Contract(address, abi, signer);
-	{/*var x = cid*/}
-	var x = document.getElementById('furl').value;   
+	{/*var x = cid
+	var x = document.getElementById('furl').value;*/}   
+	var y = cid;
+	var z = textNameDescription + " " + y;
+	console.log(z)
 	
-	
-	await storingx.storex(x);
+	await storingx.storex(z);
     
     document.getElementById('furl').value = " ";
 }}
