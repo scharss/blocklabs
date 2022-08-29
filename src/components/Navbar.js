@@ -28,8 +28,8 @@ export function MyMenu() {
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3" className="lateral">
                   <Nav.Link href="/">Home</Nav.Link>
-                  <Nav.Link href="/manager">Manager</Nav.Link>
-				  
+				  <Nav.Link href="/nftdrive">NFT Drive</Nav.Link>	
+                  <Nav.Link href="/manager">Manager</Nav.Link>				  
 				  <Nav.Link href="/tester">Uploader</Nav.Link>
 				  >
                   <NavDropdown

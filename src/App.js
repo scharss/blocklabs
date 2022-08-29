@@ -6,6 +6,7 @@ import {MyMenu} from "./components/Navbar";
 import {Test} from "./pages/Test";
 import {Uploader} from "./pages/Uploader"
 import {Tester} from "./pages/Tester"
+import {NftDrive} from "./pages/NftDrive"
 
 export default function App(){
 	return(
@@ -19,6 +20,7 @@ export default function App(){
 	<Route path='/test' element={<Test/>} />
 	<Route path='/uploader' element={<Uploader/>} />
 	<Route path='/tester' element={<Tester />} />
+	<Route path ='nftdrive' element={<NftDrive />} />
 	
 	
 	<Route path='*' element={<NotFoundPage />} />
