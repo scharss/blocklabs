@@ -21,13 +21,15 @@ import '../styles.css'
 //bootstrap
 
 //**********************************CONTRACT CONNECT***********************************
+const NFT_STORAGE_TOKEN = process.env.REACT_APP_STORAGE
+const client = new NFTStorage({ token: NFT_STORAGE_TOKEN })
 
 let provider = new ethers.providers.Web3Provider(window.ethereum)
 let signer
 
 var cid = 0 // storage
 
-export function ContractManager() {
+export function Connectmetamask() {
 	
 	
 	return (<div>
@@ -38,15 +40,15 @@ export function ContractManager() {
 
     signer = await provider.getSigner();
 	var cuenta = await signer.getAddress();
-	document.getElementById("demo").innerHTML= "Cuenta: " + cuenta;
-    console.log("Account address s:", await signer.getAddress());}}
+	document.getElementById("demo").innerHTML= "User: " + cuenta;
+    console.log("Account address:", await signer.getAddress());}}
 	
 	
-	>Conectar</Button>{' '}
+	>Connect Metamask</Button>{' '}
 	<br />
 	
 	
-	<p id="demo">Cuenta:</p>
+	<p id="demo">User:</p>
 	
 	
 	
@@ -60,9 +62,9 @@ export function ContractManager() {
 		 
 		 var address =0
 
-export function Direccion(){
+export function ContractInput(){
 	return (<div>
-	<p>Contracto No: <input id="add2" onChange={function(e){
+	<p>Contract: <input id="add2" onChange={function(e){
 		 address = e.target.value
 		console.log(address)}}/></p>
 	</div>)
@@ -99,61 +101,77 @@ const abi = [
 	}
 ];
 
-export function ReadContract(){
-	 
+
+
+var textNameDescription = " ";
+export function InputNameDescrip(){
+	return(<>
 	
-	 
-	return (<div>
-	
-	<Button variant="primary"
-	onClick={async ()=>{
-		const contracto = new ethers.Contract(address, abi, provider);
-	
-	const asunto = await contracto.urlNFT();
-	document.getElementById("demo2").innerHTML= "Mensaje: " + asunto;
-	
-	}}
-	
-	
-	
-	
-	>Leer Contracto</Button>{' '}
-	
-	 <p id="demo2">Mensaje:</p>
-		    </div>)
-	
-	
+	<p>Name/Description:</p>
+	<p> <input id="furl" className="inputScript" onChange={function(e){
+		textNameDescription = e.target.value
+		
+		console.log(textNameDescription)}}/></p>
+		
+	</>)
 }
 
-
-
-
-
+var myFile= [];
+export function ChooseFile(){
+	
+	
+	
+	return(<>
+	
+			<h4>Upload file to IPFS</h4>
+			{/*<input id="fileItem" type="file" className="MyInputFile" name="My File"/>*/}
+			<p><input id="fileItem" type="file" className="MyInputFile" name="My File" onChange={function(){
+		const file = document.getElementById('fileItem').files[0];
+		myFile.push(file);}}/></p>
+			
+						
+	
+	</>)
+}
 
 
 export function WriteContract()
 
 {return(<div>
 
-	{/*Formulario y botón*/}
-
-	<p>Escribir: <input id="furl" onChange={function(e){
-		var caja = e.target.value
-		console.log(caja)}}/></p>
-
+	{/*Formulario y botón
+	<p>Name/Description:</p>
+	<p> <input id="furl" className="inputScript" onChange={function(e){
+		textNameDescription = e.target.value
+		
+		console.log(textNameDescription)}}/></p>
+*/}
 
 
 <Button variant="primary"
 onClick={async ()=>{
 	
 	const storingx = new ethers.Contract(address, abi, signer);
-	{/*var x = cid*/}
-	var x = document.getElementById('furl').value;   
+	{/*var x = cid
+	var x = document.getElementById('furl').value;*/} 
+
+cid = await client.storeDirectory([
+	new File([myFile[0]], myFile[0].name),
+	new File([JSON.stringify({'from': 'incognito'}, null, 2)], 'metadata.json')
+])
+	
+	console.log(cid)
+
+
 	
 	
-	await storingx.storex(x);
+	var z = textNameDescription + " " + cid;
+	console.log(z)
+	
+	await storingx.storex(z);
     
     document.getElementById('furl').value = " ";
+	myFile.shift();
 }}
 
 
@@ -165,32 +183,43 @@ onClick={async ()=>{
 
 </div>)}
 
+
+
+export function ReadContract(){
+	 
+	
+	 
+	return (<div>
+	<h5>Read Contract</h5>
+	<Button variant="primary"
+	onClick={async ()=>{
+		const contracto = new ethers.Contract(address, abi, provider);
+	
+	const asunto = await contracto.urlNFT();
+	document.getElementById("demo2").innerHTML= "Message: " + asunto;
+	
+	}}
+	
+	
+	
+	
+	>Read Contract</Button>{' '}
+	
+	 <p id="demo2">Message:</p>
+		    </div>)
+	
+	
+}
+
+
 //**********************************CONTRACT CONNECT***********************************
 
 //**********************************STORAGE***********************************
 
-const NFT_STORAGE_TOKEN = process.env.REACT_APP_STORAGE
-const client = new NFTStorage({ token: NFT_STORAGE_TOKEN })
 
 
 
-var myFile= [];
-export function TesterComponent(){
-	
-	
-	
-	return(<>
-	
-			<h2>Upload file to IPFS</h2>
-			{/*<input id="fileItem" type="file" className="MyInputFile" name="My File"/>*/}
-			<p><input id="fileItem" type="file" className="MyInputFile" name="My File" onChange={function(){
-		const file = document.getElementById('fileItem').files[0];
-		myFile.push(file);}}/></p>
-			
-						
-	
-	</>)
-}
+
 
 export function TesterFactor(){
 	return(<>
@@ -228,7 +257,7 @@ console.log('metadata.json with IPFS gateway URLs:\n', metadata.embed())
 	</>)
 }
 
-
+{/*
 export function StoreFile(){
 	return(<>
 	
@@ -245,7 +274,7 @@ export function StoreFile(){
 	>Store file in IPFS</Button>
 	</>)
 }
-
+*/}
 
 
 
