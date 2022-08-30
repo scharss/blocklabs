@@ -42,3 +42,9 @@ body{
 .inputScript{ 
 padding: 20px 10px; line-height: 28px; 
 }
+.NftDrivePage{
+	text-align: center;
+}
+.MetamaskBtn{
+	text-align: left;
+}
