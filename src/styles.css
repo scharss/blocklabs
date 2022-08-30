@@ -48,3 +48,13 @@ padding: 20px 10px; line-height: 28px;
 .MetamaskBtn{
 	text-align: left;
 }
+.deletedata{
+	text-align: left;
+}
+.deletedataInput{
+	text-align: left;
+	
+}
+#dataBorrar{
+	width:30px;
+}

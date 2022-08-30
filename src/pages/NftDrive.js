@@ -1,4 +1,4 @@
-import {InputNameDescrip, TituloPaginaNftDrive, ChooseFile, TesterFactor, Connectmetamask, ContractInput, ReadContract, WriteContract} from "../components/NftDriveComponent"
+import {InputdeleteDataContract, DeleteIdButtonContract, InputNameDescrip, TituloPaginaNftDrive, ChooseFile, TesterFactor, Connectmetamask, ContractInput, ReadContract, WriteContract} from "../components/NftDriveComponent"
 
 //bootstrap
 import { Button } from 'react-bootstrap';
@@ -38,6 +38,10 @@ export function NftDrive(){
 	<ChooseFile />
 	
 	<WriteContract />
+	
+	<InputdeleteDataContract />
+	<DeleteIdButtonContract />
+	
 	<ReadContract />
       </Col>
       </Row>
