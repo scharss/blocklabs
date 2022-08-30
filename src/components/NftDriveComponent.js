@@ -58,7 +58,7 @@ export function Connectmetamask() {
 	)
 } 
 {/*  
-	     0xBEFcA8Cd9EAe06C0b6Da44CF0b877fc7813e0915      */}
+	     0xa3EbfE65CA40144fCc5e395C5cecceDDbE4d2d15      */}
 		 
 		 var address =0
 
@@ -76,24 +76,82 @@ const abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "string",
-				"name": "url",
-				"type": "string"
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
 			}
 		],
-		"name": "storex",
+		"name": "removeData",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
 		"inputs": [],
-		"name": "urlNFT",
+		"name": "saveData",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "data",
+				"type": "string"
+			}
+		],
+		"name": "upData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "arr",
 		"outputs": [
 			{
 				"internalType": "string",
 				"name": "",
 				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "dataStorage",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getdata",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
 			}
 		],
 		"stateMutability": "view",
@@ -137,7 +195,7 @@ export function ChooseFile(){
 
 export function WriteContract()
 
-{return(<div className="MetamaskBtn">
+{return(<div>
 
 	{/*Formulario y botón
 	<p>Name/Description:</p>
@@ -168,7 +226,8 @@ cid = await client.storeDirectory([
 	var z = textNameDescription + " " + cid;
 	console.log(z)
 	
-	await storingx.storex(z);
+	await storingx.upData(z);
+	await storingx.saveData();
     
     document.getElementById('furl').value = " ";
 	myFile.shift();
@@ -177,7 +236,7 @@ cid = await client.storeDirectory([
 
 
 
->Write Contract</Button>{' '}
+>Save</Button>{' '}
 
 
 
@@ -193,10 +252,18 @@ export function ReadContract(){
 	<h5>Read Contract</h5>
 	<Button variant="primary"
 	onClick={async ()=>{
-		const contracto = new ethers.Contract(address, abi, provider);
+	const contracto = new ethers.Contract(address, abi, provider);
 	
-	const asunto = await contracto.urlNFT();
-	document.getElementById("demo2").innerHTML= "Message: " + asunto;
+	const myArray = await contracto.getdata();
+	console.log(myArray);
+	console.log(myArray.length);
+	
+	let text= "";
+	for(let i=0; i<(myArray.length); i++){
+		text += myArray[i] + "<br>";
+	}
+	
+	document.getElementById("demos").innerHTML = text;
 	
 	}}
 	
@@ -205,7 +272,7 @@ export function ReadContract(){
 	
 	>Read Contract</Button>{' '}
 	
-	 <p id="demo2">Message:</p>
+	 <p id="demos"></p>
 		    </div>)
 	
 	
