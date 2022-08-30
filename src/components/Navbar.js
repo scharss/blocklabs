@@ -13,7 +13,7 @@ export function MyMenu() {
       {['sm'].map((expand) => (
         <Navbar key={expand} bg="dark" variant="dark" expand={expand} className="mb-3">
           <Container fluid>
-            <Navbar.Brand href="#">Blockpaper</Navbar.Brand>
+            <Navbar.Brand href="#">DePhi Labs</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -22,15 +22,14 @@ export function MyMenu() {
             >
               <Offcanvas.Header closeButton className="lateral">
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} >
-                  BlockPapers
+                  DePhi Labs
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3" className="lateral">
                   <Nav.Link href="/">Home</Nav.Link>
 				  <Nav.Link href="/nftdrive">NFT Drive</Nav.Link>	
-                  <Nav.Link href="/manager">Manager</Nav.Link>				  
-				  <Nav.Link href="/tester">Uploader</Nav.Link>
+                  
 				  >
                   <NavDropdown
                     title="Dropdown"

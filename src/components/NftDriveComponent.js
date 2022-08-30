@@ -32,7 +32,7 @@ var cid = 0 // storage
 export function Connectmetamask() {
 	
 	
-	return (<div>
+	return (<div className="MetamaskBtn">
 	
 	<Button variant="primary"
 	onClick={async ()=>{   // MetaMask requires requesting permission to connect users accounts
@@ -63,7 +63,7 @@ export function Connectmetamask() {
 		 var address =0
 
 export function ContractInput(){
-	return (<div>
+	return (<div className="MetamaskBtn">
 	<p>Contract: <input id="add2" onChange={function(e){
 		 address = e.target.value
 		console.log(address)}}/></p>
@@ -123,7 +123,7 @@ export function ChooseFile(){
 	
 	return(<>
 	
-			<h4>Upload file to IPFS</h4>
+			<h5>Upload file </h5>
 			{/*<input id="fileItem" type="file" className="MyInputFile" name="My File"/>*/}
 			<p><input id="fileItem" type="file" className="MyInputFile" name="My File" onChange={function(){
 		const file = document.getElementById('fileItem').files[0];
@@ -137,7 +137,7 @@ export function ChooseFile(){
 
 export function WriteContract()
 
-{return(<div>
+{return(<div className="MetamaskBtn">
 
 	{/*Formulario y botón
 	<p>Name/Description:</p>
@@ -177,7 +177,7 @@ cid = await client.storeDirectory([
 
 
 
->Escribir Contracto</Button>{' '}
+>Write Contract</Button>{' '}
 
 
 
@@ -189,7 +189,7 @@ export function ReadContract(){
 	 
 	
 	 
-	return (<div>
+	return (<div className="MetamaskBtn">
 	<h5>Read Contract</h5>
 	<Button variant="primary"
 	onClick={async ()=>{
@@ -280,3 +280,11 @@ export function StoreFile(){
 
 
 //**********************************STORAGE***********************************
+
+export function TituloPaginaNftDrive(){
+	return(<>
+	
+	<h2>NFT Drive</h2>
+	
+	</>)
+}
