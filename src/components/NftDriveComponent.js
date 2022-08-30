@@ -221,9 +221,9 @@ cid = await client.storeDirectory([
 	console.log(cid)
 
 
+	const d = new Date()
 	
-	
-	var z = textNameDescription + " " + cid;
+	var z = "Description: " + textNameDescription + ", " + "File IPFS : " + "https://ipfs.io/ipfs/"+ cid+"/"+myFile[0].name + " Date: " +d;
 	console.log(z)
 	
 	await storingx.upData(z);
@@ -260,7 +260,7 @@ export function ReadContract(){
 	
 	let text= "";
 	for(let i=0; i<(myArray.length); i++){
-		text += myArray[i] + "<br>";
+		text += "id: " + i + ", " + myArray[i] + "<br>";
 	}
 	
 	document.getElementById("demos").innerHTML = text;
@@ -279,9 +279,7 @@ export function ReadContract(){
 }
 
 
-//**********************************CONTRACT CONNECT***********************************
 
-//**********************************STORAGE***********************************
 
 
 
@@ -354,4 +352,37 @@ export function TituloPaginaNftDrive(){
 	<h2>NFT Drive</h2>
 	
 	</>)
+}
+
+
+
+var iddeleteData = " ";
+export function InputdeleteDataContract(){
+	return(<div className="deletedataInput">
+	
+	<h4>Remove data by id</h4>
+	<p>Id to Remove: <input className="deletedata" id="dataBorrar"  onChange={function(e){
+		iddeleteData = e.target.value
+		
+		console.log(iddeleteData)}}/></p>
+		
+	</div>)
+}
+
+export function DeleteIdButtonContract(){
+	return(<div className="deletedata">
+	
+	
+	<Button  variant="primary"
+	onClick={async ()=>{
+		const storingx = new ethers.Contract(address, abi, signer);
+		var dataWantedtoDelete = document.getElementById('dataBorrar').value
+		await storingx.removeData(dataWantedtoDelete);
+	}}
+	>Remove Id</Button>
+	
+	
+	
+	
+	</div>)
 }
