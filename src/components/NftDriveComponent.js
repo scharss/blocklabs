@@ -137,7 +137,7 @@ export function ChooseFile(){
 
 export function WriteContract()
 
-{return(<div className="MetamaskBtn">
+{return(<div>
 
 	{/*Formulario y botón
 	<p>Name/Description:</p>
@@ -177,7 +177,7 @@ cid = await client.storeDirectory([
 
 
 
->Write Contract</Button>{' '}
+>Save</Button>{' '}
 
 
 
